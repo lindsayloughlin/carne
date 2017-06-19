@@ -30,9 +30,13 @@ def results(request, question_id):
 
 
 def vote(request, question_id):
-    question = get_list_or_404(Question, pk=question_id)
+
+    question = get_object_or_404(Question, pk=question_id)
     try:
-        selected_choice = question.choice_set.get(pk=request.POST['choice'])
+        # first_question = Question.objects.get(pk=1)
+        choice_index = request.POST['choice']
+        choice_set = question.choice_set
+        selected_choice = choice_set.get(pk=choice_index)
     except (KeyError, Choice.DoesNotExist):
         # Redisplay the question voting form.
         return render(request, 'polls/detail.html', {
@@ -42,9 +46,7 @@ def vote(request, question_id):
     else:
         selected_choice.votes += 1
         selected_choice.save()
-        return HttpResponseRedirect(reverse('polls:results', args=(question, id)))
-        # return HttpResponse("You're voting on question %s" % question_id)
-
+        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:3]
