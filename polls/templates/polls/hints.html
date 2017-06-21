@@ -1,0 +1,10 @@
+<h1> {{ question.question_text }} </h1>
+{% if error_message %} <p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% if hints %}
+    {% for single_hint in hints %}
+        <ul>
+            <li><img src="{{image_root}}{{ single_hint.hint_image }}" height="42" width="42"></li>
+        </ul>
+    {% endfor %}
+{% endif %}
