@@ -1,4 +1,6 @@
 from django.contrib import admin
+
+from meat.models import Animal, Part, Cut, AltPart, AltCut, Address, ContactDetails, Supplier
 from .models import Question, Choice, HintImage
 
 

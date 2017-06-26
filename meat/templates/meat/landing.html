@@ -1,0 +1,91 @@
+{% load static %}
+
+<head xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">-->
+    <script src="{% static 'libraries/vue.js' %}"></script>
+    <script src="{% static 'libraries/axios.js' %}"></script>
+    <script src="{% static  'code/landing.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'meat/meat-style.css' %}"/>
+    <title>Welcome to meat hunter</title>
+</head>
+<body>
+<form>
+    <!-- v-on="change: foo">-->
+    <div>Welcome to meat hunter</div>
+    {% verbatim %}
+
+    <div id="app">
+        <div>
+            <div>
+                <div>
+                    <a href="">Something specific?</a>
+                </div>
+
+                <select v-model="selectAnimals">
+                    <option v-for="anim in availableAnimals">
+                        {{ item }}
+                    </option>
+                </select>
+
+                <select v-model="selectedPart">
+                    <option v-for="part in availableParts">
+                        {{ part }}
+                    </option>
+                </select>
+
+                <select v-model="selectedCut">
+                    <option v-for="cut in availableCuts">
+                        {{ cut }}
+                    </option>
+                </select>
+                <div>
+                    <button @click="clearAnimalSearch">Clear search</button>
+                </div>
+            </div>
+            <div>
+                <a href="">Near by?</a>
+            </div>
+            <div>
+                Suburb<br>
+                <input type="text" name="homesuburb" v-model="homeSuburb" placeholder="Enter home suburb.."><br>
+                <select v-if="displayDropDown" v-model="selectedPostcode">
+                    <option v-for="singlesuburb in availableHomeSuburbs"
+                            :value="singlesuburb.postcode"
+                            >{{singlesuburb.display}}
+                    </option>
+                </select>
+
+                <input type="text" name="worksuburb" v-model="workSelectedSuburb" placehodler="Entry work suburb...">
+                <select v-if="displayDropDown" v-model="selectedPostcode">
+                    <option v-for="singlesuburb in availableSuburbs"
+                            :value="singlesuburb.postcode"
+                            >{{singlesuburb.display}}
+                    </option>
+                </select>
+
+            </div>
+
+            <button value="search">Launch yum</button>
+        </div>
+        <div>
+            Maximum travel time <input type="number"/>
+        </div>
+    </div>
+    {% endverbatim %}
+
+    </form>
+    <div>
+    Select from some of our favourites
+    </div>
+
+
+    <!--<a class="header-link" href="">Hunt for meat</a>-->
+    <!--<a class="header-link" href=""></a>-->
+
+    <!--
+        <div>I'm looking for something tasty</div>
+        <form actions="/meatsearch"/>
+        method="post">
+            <label for="animal">Animal</label>
+            -->
+</body>

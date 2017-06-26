@@ -1,0 +1,16 @@
+{% load static %}
+
+
+<body>
+Best applier detail page ever for {{ supplier_name }}
+
+
+
+
+
+{% if supplier_model %}
+  Supplier name from model {{ supplier_model.name }} {{ supplier_model.contact_details.phone}}
+{% else %}
+    no supplier model
+{% endif %}
+</body>

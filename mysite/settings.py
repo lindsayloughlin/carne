@@ -32,13 +32,13 @@ ALLOWED_HOSTS = ['*' ]
 INSTALLED_APPS = [
 
     'polls.apps.PollsConfig',
+    'meat.apps.MeatConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
 ]
 
 MIDDLEWARE = [
@@ -123,4 +123,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 #MEDIA_ROOT = "/media/"
 MEDIA_URL = "/media/"
-MEDIA_ROOT = '/Users/lloughlin/sourcecode/django/mysite/polls/media/'
+MEDIA_ROOT = 'media/'
